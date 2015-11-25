@@ -1,0 +1,8 @@
+body {
+  text-align : center;
+}
+button {
+  display : block;
+  margin : auto;
+  padding : 0.6em;
+}

@@ -1,0 +1,54 @@
+<div id="canvas-size-and-context-live-sample" height="180">
+<h3 id="Effect_of_canvas_size_on_rendering_with_WebGL">Effect of canvas size on rendering with WebGL</h3>
+<p>This example explores the effect of setting the canvas size to its apparent size in {{Glossary("CSS")}} pixels.</p>
+<p>The size of the canvas on the left is set to the styled {{domxref("Element")}} size, as determined by {{Glossary("CSS")}}. This is done by assigning to the {{domxref("HTMLCanvasElement.width","width")}} and {{domxref("HTMLCanvasElement.height","height")}} properties of the canvas, the values of the {{domxref("Element.clientWidth","clientWidth")}} and {{domxref("Element.clientHeight","clientHeight")}} properties, respectively.</p>
+<p>In contrast, no such assignment is done for the right canvas, so the canvas internal {{domxref("HTMLCanvasElement.width","width")}} and {{domxref("HTMLCanvasElement.height","height")}} remain at default values, which disagree with the styled {{domxref("Element")}} size.</p>
+<p>The effect is clearly visible when trying to draw a square by specifying its position and size in pixels (using the {{domxref("WebGLRenderingContext.scissor()","scissor")}} and {{domxref("WebGLRenderingContext.clear()","clear")}} WebGL functions).</p>
+<pre class="brush: html">
+&lt;p&gt;[ Here would go the result of WebGL context feature detection ]&lt;/p&gt;
+&lt;canvas&gt;Your browser does not seem to support HTML5 canvas.&lt;/canvas&gt;
+&lt;canvas&gt;Your browser does not seem to support HTML5 canvas.&lt;/canvas&gt;
+</pre>
+<pre class="brush: css">
+body {
+  text-align : center;
+}
+canvas {
+  width : 120px;
+  height : 80px;
+  margin : auto;
+  padding : 0;
+  border : none;
+  background-color : black;
+}
+</pre>
+<pre class="brush: js">
+window.addEventListener("load", function() {
+  "use strict"
+  var paragraph = document.querySelector("p"),
+    leftCanvas = document.getElementsByTagName("canvas")[0],
+    rightCanvas = document.getElementsByTagName("canvas")[1];
+  leftCanvas.width = leftCanvas.clientWidth;
+  leftCanvas.height = leftCanvas.clientHeight;
+  [leftCanvas, rightCanvas].forEach(function(canvas) {
+    var gl = canvas.getContext("webgl")
+      || canvas.getContext("experimental-webgl");
+    if (!gl) {
+      paragraph.innerHTML = "Failed to get WebGL context. "
+        + "Your browser or device may not support WebGL.";
+      return;
+    }
+    paragraph.innerHTML = "Congratulations! Your browser supports WebGL. "
+      + "Now, compare the two canvases.";
+    gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+    gl.enable(gl.SCISSOR_TEST);
+    gl.scissor(30, 10, 60, 60);
+    gl.clearColor(1.0, 1.0, 0.0, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+  });
+}, false);
+</pre>
+</div>
+<p>When running this example we get</p>
+{{EmbedLiveSample("canvas-size-and-context-live-sample",660,180)}}
+<p>You can further explore this example on Thimble.</p>
