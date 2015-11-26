@@ -3,6 +3,7 @@ body {
 }
 button {
   display : block;
+  font-size : inherit;
   margin : auto;
   padding : 0.6em;
 }
