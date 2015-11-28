@@ -3,6 +3,7 @@ body {
 }
 button {
   display : block;
+  font-size : inherit;
   margin : auto;
   padding : 0.6em;
 }
@@ -13,4 +14,7 @@ canvas {
   padding : 0;
   border : none;
   background-color : black;
+}
+#action-verb {
+  font-weight : bold;
 }
