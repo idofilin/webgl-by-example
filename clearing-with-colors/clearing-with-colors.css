@@ -1,0 +1,17 @@
+body {
+  text-align : center;
+}
+button {
+  display : block;
+  font-size : inherit;
+  margin : auto;
+  padding : 0.6em;
+}
+canvas {
+  width : 280px;
+  height : 210px;
+  margin : auto;
+  padding : 0;
+  border : none;
+  background-color : black;
+}
