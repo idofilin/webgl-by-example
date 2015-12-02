@@ -1,3 +1,4 @@
+;(function(){
 window.addEventListener("load", function setupAnimation (evt) {
   "use strict"
   window.removeEventListener(evt.type, setupAnimation, false);            
@@ -6,12 +7,12 @@ window.addEventListener("load", function setupAnimation (evt) {
   var timer;
 
   // Click event handlers.  
-  var button = document.getElementById("animation-onoff");
-  var verbspan = document.getElementById("action-verb");
+  var button = document.querySelector("#animation-onoff");
+  var verb = document.querySelector("strong");
   function startAnimation(evt) {
     button.removeEventListener(evt.type, startAnimation, false);            
     button.addEventListener("click", stopAnimation, false);
-    verbspan.innerHTML="stop";
+    verb.innerHTML="stop";
     // Setup animation loop by redrawing every second.
     timer = setInterval(drawAnimation, 1000);
     // Give immediate feedback to user after clicking, by
@@ -21,7 +22,7 @@ window.addEventListener("load", function setupAnimation (evt) {
   function stopAnimation(evt) {
     button.removeEventListener(evt.type, stopAnimation, false);            
     button.addEventListener("click", startAnimation, false);
-    verbspan.innerHTML="start";
+    verb.innerHTML="start";
     // Stop animation by clearing the timer.
     clearInterval(timer);
   }
@@ -59,3 +60,4 @@ window.addEventListener("load", function setupAnimation (evt) {
     return [Math.random(), Math.random(), Math.random()];
   }
 }, false);
+})();

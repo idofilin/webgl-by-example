@@ -1,6 +1,7 @@
+;(function(){
 window.addEventListener("load", function setupWebGL (evt) { 
   "use strict"
-  window.removeEventListener(evt.type, setupWebGL, false);            
+  window.removeEventListener(evt.type, setupWebGL, false);          
   var paragraph = document.querySelector("p");
   var canvas = document.querySelector("canvas");
 
@@ -20,12 +21,13 @@ window.addEventListener("load", function setupWebGL (evt) {
   gl.viewport(0, 0, 
     gl.drawingBufferWidth, gl.drawingBufferHeight);
 
-  // Enable scissoring operation and define the size of the
-  // scissoring area.
+  // Enable scissoring operation and define the position and
+  // size of the scissoring area.
   gl.enable(gl.SCISSOR_TEST);
   gl.scissor(40, 20, 60, 170);
 
-  // Clear the rendering context solid yellow.
+  // Clear the drawing buffer solid yellow.
   gl.clearColor(1.0, 1.0, 0.0, 1.0);
   gl.clear(gl.COLOR_BUFFER_BIT);
 }, false);
+})();

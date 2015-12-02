@@ -1,3 +1,4 @@
+;(function(){
 // Run everything inside window load event handler, to make sure
 // DOM is fully loaded and styled before trying to manipulate it,
 // and to not mess up the global scope. We are giving the event
@@ -18,8 +19,8 @@ window.addEventListener("load", function setupWebGL (evt) {
   var gl = canvas.getContext("webgl") 
     || canvas.getContext("experimental-webgl");
 
-   // If failed, inform user of failure.  Otherwise, initialize
-   // the drawing area (the viewport) and clear the context
+   // If failed, inform user of failure. Otherwise, initialize
+   // the drawing buffer (the viewport) and clear the context
    // with a solid color. 
   if (!gl) {
     paragraph.innerHTML = "Failed to get WebGL context. " 
@@ -37,3 +38,4 @@ window.addEventListener("load", function setupWebGL (evt) {
   gl.clear(gl.COLOR_BUFFER_BIT);
 
 }, false);
+})();

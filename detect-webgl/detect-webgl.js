@@ -1,3 +1,4 @@
+;(function(){
 // Run everything inside window load event handler, to make sure
 // DOM is fully loaded and styled before trying to manipulate it.
 window.addEventListener("load", function() { 
@@ -23,3 +24,4 @@ window.addEventListener("load", function() {
     }
   }
 }, false);
+})();

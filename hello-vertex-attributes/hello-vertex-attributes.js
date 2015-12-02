@@ -34,11 +34,20 @@ function setupWebGL (evt) {
   } 
 
   initializeAttributes();
-
   gl.useProgram(program);
   gl.drawArrays(gl.POINTS, 0, 1);
 
-  cleanup();
+  document.querySelector("canvas").addEventListener("click",
+    function (evt) {
+      var clickXrelativToCanvas = 
+          evt.pageX - evt.target.offsetLeft; 
+      var clickXinWebGLCoords = 
+          2.0 * (clickXrelativToCanvas- gl.drawingBufferWidth/2)
+          / gl.drawingBufferWidth;
+      gl.bufferData(gl.ARRAY_BUFFER,
+        new Float32Array([clickXinWebGLCoords]), gl.STATIC_DRAW);
+      gl.drawArrays(gl.POINTS, 0, 1);
+    }, false);
 }
 
 var buffer;
@@ -46,15 +55,17 @@ function initializeAttributes() {
   gl.enableVertexAttribArray(0);
   buffer = gl.createBuffer();  
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0.0]), gl.STATIC_DRAW);
   gl.vertexAttribPointer(0, 1, gl.FLOAT, false, 0, 0);
 }
 
+window.addEventListener("beforeunload", cleanup, true);
 function cleanup() {
-gl.useProgram(null);
-if (buffer)
-  gl.deleteBuffer(buffer);
-if (program) 
-  gl.deleteProgram(program);
+  gl.useProgram(null);
+  if (buffer)
+    gl.deleteBuffer(buffer);
+  if (program) 
+    gl.deleteProgram(program);
 }
 
 function getRenderingContext() {

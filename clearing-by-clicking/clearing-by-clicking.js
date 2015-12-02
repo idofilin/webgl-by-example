@@ -1,8 +1,4 @@
-// Run everything inside window load event handler, to make sure
-// DOM is fully loaded and styled before trying to manipulate it,
-// and to not mess up the global scope. We are giving the event
-// handler a name (setupWebGL) so that we can refer to the
-// function object within the function itself.
+;(function(){
 window.addEventListener("load", function setupWebGL (evt) {
   "use strict"
 
@@ -22,10 +18,10 @@ window.addEventListener("load", function setupWebGL (evt) {
 
   // The click event handler. 
   function switchColor () {
-    // Referring to the externally defined gl variable.  If
-    // undefined, try to obtain the WebGLRenderingContext.  If
-    // failed, alert user of failure.  Otherwise, initialize the
-    // drawing area (the viewport). 
+    // Referring to the externally defined gl variable. 
+    // If undefined, try to obtain the WebGLRenderingContext.
+    // If failed, alert user of failure.
+    // Otherwise, initialize the drawing buffer (the viewport). 
     if (!gl) {
       gl = canvas.getContext("webgl") 
         || canvas.getContext("experimental-webgl");
@@ -52,3 +48,4 @@ window.addEventListener("load", function setupWebGL (evt) {
   }
 
 }, false);
+})();
