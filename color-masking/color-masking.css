@@ -12,7 +12,19 @@ canvas {
 }
 button {
   display : inline-block;
+  font-family : serif;
   font-size : inherit;
+  font-weight : 900;
+  color : white;
   margin : auto;
-  padding : 0.6em;
+  padding : 0.6em 1.2em;
+}
+#red-toggle {
+  background-color : red;
+}
+#green-toggle {
+  background-color : green;
+}
+#blue-toggle {
+  background-color : blue;
 }

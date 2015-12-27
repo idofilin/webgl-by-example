@@ -51,10 +51,10 @@ function playerClick (evt) {
     ];
   // if the click falls inside the rectangle, we caught it.
   // Increment score and create a new rectangle.
-  if ( position[0] >= rainingRect.position[0]
-      && position[0] < rainingRect.position[0] + rainingRect.size[0]
-      && position[1] >= rainingRect.position[1]
-      && position[1] < rainingRect.position[1] + rainingRect.size[1]) {
+  var diffPos = [ position[0] - rainingRect.position[0],
+      position[1] - rainingRect.position[1] ];
+  if ( diffPos[0] >= 0 && diffPos[0] < rainingRect.size[0]
+      && diffPos[1] >= 0 && diffPos[1] < rainingRect.size[1] ) {
     score += 1;
     scoreDisplay.innerHTML = score;
     rainingRect = new Rectangle();

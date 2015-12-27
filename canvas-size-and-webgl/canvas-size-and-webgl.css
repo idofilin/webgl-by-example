@@ -2,6 +2,7 @@ body {
   text-align : center;
 }
 canvas {
+  display : inline-block;
   width : 120px;
   height : 80px;
   margin : auto;

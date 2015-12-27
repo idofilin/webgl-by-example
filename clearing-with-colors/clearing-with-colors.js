@@ -19,9 +19,9 @@ window.addEventListener("load", function setupWebGL (evt) {
   var gl = canvas.getContext("webgl") 
     || canvas.getContext("experimental-webgl");
 
-   // If failed, inform user of failure. Otherwise, initialize
-   // the drawing buffer (the viewport) and clear the context
-   // with a solid color. 
+  // If failed, inform user of failure. Otherwise, initialize
+  // the drawing buffer (the viewport) and clear the context
+  // with a solid color. 
   if (!gl) {
     paragraph.innerHTML = "Failed to get WebGL context. " 
       + "Your browser or device may not support WebGL.";

@@ -24,7 +24,7 @@ window.addEventListener("load", function setupWebGL (evt) {
   // Enable scissoring operation and define the position and
   // size of the scissoring area.
   gl.enable(gl.SCISSOR_TEST);
-  gl.scissor(40, 20, 60, 170);
+  gl.scissor(40, 20, 60, 130);
 
   // Clear the drawing buffer solid yellow.
   gl.clearColor(1.0, 1.0, 0.0, 1.0);
