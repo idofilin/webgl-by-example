@@ -14,9 +14,9 @@ function setupAnimation (evt) {
 
   gl.enable(gl.SCISSOR_TEST);
   gl.clearColor(color[0], color[1], color[2], 1.0);
-  // Unlike the browser window, vertical position in WebGL in
+  // Unlike the browser window, vertical position in WebGL is
   // measured from bottom to top. In here we set the initial
-  // position of the square to be in the top left corner of the
+  // position of the square to be at the top left corner of the
   // drawing buffer.
   position = [0, gl.drawingBufferHeight];
 
